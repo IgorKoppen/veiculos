@@ -1,0 +1,8 @@
+package br.com.fiap;
+
+import java.util.Date;
+
+public  final class Caminhao extends Veiculo {
+
+	
+}

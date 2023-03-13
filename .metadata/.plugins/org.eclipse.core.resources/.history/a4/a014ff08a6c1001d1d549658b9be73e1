@@ -1,0 +1,21 @@
+package br.com.fiap;
+
+import java.util.Date;
+
+public final class Carro extends Veiculo {
+
+
+
+	@Override
+	public void ShowVeiculosStatus() {
+		System.out.println("Modelo:" + this.nomeModelo);
+		System.out.println("Marca:" + this.marca);
+		System.out.println("Cor:" + this.cor);
+		System.out.println("Embreagem:" + this.embreagem);
+		System.out.println("Ano de fabriaçao:" + this.anoFabricacao);
+		System.out.println("tipo Combustivel:" + this.combustivel);
+	}
+
+
+
+}

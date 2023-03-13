@@ -1,0 +1,59 @@
+package br.com.fiap;
+
+import java.util.Date;
+
+public abstract class Veiculo {
+  
+	protected String nomeModelo;
+	protected String marca;
+	protected String cor;
+	protected String embreagem;
+	protected String tipoCombustivel;
+    protected Date anoFabricacao;
+    protected int velocidade;
+    protected int maxVelocidade;
+    protected float combustivel;
+    protected float peso;
+    protected boolean estaLigado;
+	
+    public Veiculo(String nomeModelo, String marca, String cor, String embreagem, String tipoCombustivel,
+			Date anofabricacao, int acelerar, int maxVelocidade, float combustivel, float peso, boolean estaLigado) {
+		super();
+		this.nomeModelo = nomeModelo;
+		this.marca = marca;
+		this.cor = cor;
+		this.embreagem = embreagem;
+		this.tipoCombustivel = tipoCombustivel;
+		this.anofabricacao = anofabricacao;
+		this.MaxVelocidade = maxVelocidade;
+		this.combustivel = 0;
+		this.peso = peso;
+		this.estaLigado = false;
+	}
+	
+    
+    public void Acelerar(int ValorDaAcelera){
+    	if(this.combustivel > 0 && this.estaLigado==true && this.acelerar < ){
+    	this.acelerar += ValorDaAcelera;
+    	}
+    }
+    
+    
+	
+    
+    
+    
+    
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+}

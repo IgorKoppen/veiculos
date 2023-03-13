@@ -1,0 +1,9 @@
+package br.com.fiap;
+
+import java.util.Date;
+
+public final class Carro extends Veiculo {
+
+
+
+}

@@ -1,0 +1,16 @@
+package br.com.fiap;
+
+import java.util.Date;
+
+public final class Carro extends Veiculo {
+
+	public Carro(String nomeModelo, String marca, String cor, String embreagem, String tipoCombustivel,
+			Date anofabricacao, int acelerar, int maxVelocidade, float combustivel, float peso, boolean estaLigado) {
+		super(nomeModelo, marca, cor, embreagem, tipoCombustivel, anofabricacao, acelerar, maxVelocidade, combustivel, peso,
+				estaLigado);
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+}

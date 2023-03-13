@@ -1,0 +1,10 @@
+package br.com.fiap;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Carro Carro1 = new Carro("C40", "volvo", "azul", "automatico", "eletrico", "20/10/2019", 0, 300, 0, 50, false)
+
+	}
+
+}
