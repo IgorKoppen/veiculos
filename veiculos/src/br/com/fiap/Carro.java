@@ -6,10 +6,10 @@ public final class Carro extends Veiculo {
 
 	public Carro(String nomeModelo, String marca, String cor, String embreagem, String tipoCombustivel,
 			String anoFabricacao, int velocidade, int maxVelocidade, double combustivel, double peso,
-			boolean estaLigado, boolean estaOnfarol) throws ParseException {
+			boolean estaLigado, boolean temBateria, boolean estaOnfarol) throws ParseException {
 		super(nomeModelo, marca, cor, embreagem, tipoCombustivel, anoFabricacao, velocidade, maxVelocidade, combustivel,
-				peso, estaLigado, estaOnfarol);
-		// TODO Auto-generated constructor stub
+				peso, estaLigado, temBateria, estaOnfarol);
+
 	}
 
 	@Override
@@ -26,9 +26,7 @@ public final class Carro extends Veiculo {
 
 	@Override
 	public void Buzina() {
-		if(this.estaLigado){
 		System.out.println("Buz Buz");
-		}
 	}
 
 }

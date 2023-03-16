@@ -17,11 +17,13 @@ public abstract class Veiculo {
 	protected double combustivel;
 	protected double peso;
 	protected boolean estaLigado;
+	protected boolean temBateria;
 	protected boolean estaOnfarol;
 
 	public Veiculo(String nomeModelo, String marca, String cor, String embreagem, String tipoCombustivel,
 			String anoFabricacao, int velocidade, int maxVelocidade, double combustivel, double peso,
-			boolean estaLigado, boolean estaOnfarol) throws ParseException {
+			boolean estaLigado, boolean temBateria, boolean estaOnfarol) throws ParseException {
+
 		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 		this.nomeModelo = nomeModelo;
 		this.marca = marca;
@@ -34,6 +36,7 @@ public abstract class Veiculo {
 		this.combustivel = 0;
 		this.peso = peso;
 		this.estaLigado = false;
+		this.temBateria = true;
 		this.estaOnfarol = false;
 	}
 
@@ -41,44 +44,56 @@ public abstract class Veiculo {
 		this.combustivel += quantidade;
 	}
 
-	public void Ligar() {
-		this.estaLigado = true;
-	}
-
-	public void Desligar() {
-		this.estaLigado = false;
-	}
-
-	public void Acelerar(int valorDaAcelera) {
-
-		if (this.combustivel > 0 && this.estaLigado == true && this.velocidade < this.maxVelocidade) {
-			this.velocidade += valorDaAcelera;
+	public boolean TurnOn() {
+		if (this.estaLigado == false && this.temBateria == true) {
+			this.estaLigado = true;
+			return true;
 		} else {
-			throw new ImpossivelAcelerar();
+			return false;
+		}
+	}
+
+	public boolean TurnOff() {
+		if (this.estaLigado == true && this.temBateria == true) {
+			this.estaLigado = false;
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public int Velocidade(int velocidadeNova) {
+		if (TurnOn() == true) {
+			return Velocidade(velocidadeNova);
+		}
+
+		if (this.maxVelocidade > this.velocidade) {
+			this.velocidade = this.velocidade + velocidadeNova;
+			return Velocidade(velocidadeNova);
+		} else {
+			if (this.maxVelocidade < this.velocidade) {
+				
+				return this.velocidade = this.maxVelocidade;
+			}
+			return this.velocidade;
 		}
 
 	}
 
 	public void Desacelerar(int valorDaDesacelerar) {
-
-		if (this.combustivel > 0 && this.estaLigado == true && this.velocidade < this.maxVelocidade) {
-			this.velocidade += valorDaDesacelerar;
-		} else {
-			throw new ImpossivelAcelerar();
+		if (TurnOn() && this.velocidade > 0) {
+			this.velocidade -= valorDaDesacelerar;
 		}
-
 	}
 
 	public void Frear() {
-
-		if (this.combustivel > 0 && this.estaLigado == true && this.velocidade < this.maxVelocidade) {
+		if (TurnOn() && this.velocidade > 0) {
 			this.velocidade = 0;
 		}
-		
 	}
 
 	public abstract void Buzina();
-	
+
 	public abstract void ShowVeiculosStatus();
 
 }
