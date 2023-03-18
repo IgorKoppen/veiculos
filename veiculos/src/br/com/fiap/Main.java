@@ -7,15 +7,25 @@ public class Main {
 	public static void main(String[] args) {
 		try {
 
-			Carro carro1 = new Carro("C40", "volvo", "cinza fosco", "automatico", "eletrico", "20/10/2019", 0, 300, 0.2,
-					50.1, false, true, false);
-			Caminhao caminhao1 = new Caminhao("FH", "volvo", "rosa", "automatico", "Gasolina", "20/10/2018", 0, 300,
-					0.2, 50.1, false, true, false, "s", "s");
-
-			carro1.encherTanque(100);
+			Carro C40 = new Carro("C40 Recharge", "volvo", "cinza fosco", "automatico", "eletrico", "20/10/2019", 0,
+					180, 0, 2207, false, true, false, 4);
+			Carro SUVEX90 = new Carro("SUV EX90", "volvo", "preto", "automatico", "eletrico", "14/04/2022", 0, 180, 0,
+					2584, false, true, false, 4);
+			Carro XC60 = new Carro("XC60", "volvo", "branco", "automatico", "hibrido", "17/08/2021", 0, 180, 0, 2150,
+					false, true, false, 4);
+			Caminhao FH4x2R = new Caminhao("FH 4x2R", "volvo", "Prata", "automatico", "Diesel", "20/10/2018", 0, 260, 0,
+					5100, false, true, false, "Cabine Leito Teto Alto", 13.0);
+			Caminhao FM6x2T = new Caminhao("FM 6x2T", "volvo", "azul marinho", "manual", "Diesel", "15/10/2020", 0, 200,
+					0, 8565, false, true, false, "Cabine Leito Teto Alto", 27.5);
+			Caminhao FMX8x4R = new Caminhao("FMX 8x4 R", "volvo", "amarelo", "automatico", "Eletrico", "15/10/2023", 0,
+					245, 0.2, 11808, false, true, false, "Cabine estendida", 52.0);
+			FH4x2R.EncherTanque(29);
+			FH4x2R.LigarFarol();
+			FH4x2R.Acelerar(200);
+			FH4x2R.Acelerar(50);
+			FH4x2R.Desacelerar(20);
 			
-			carro1.Desacelerar(300);
-			carro1.ShowVeiculosStatus();
+			FH4x2R.InformaçõesConsole();
 
 		} catch (ParseException e) {
 			e.printStackTrace();

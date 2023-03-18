@@ -40,60 +40,79 @@ public abstract class Veiculo {
 		this.estaOnfarol = false;
 	}
 
-	public void encherTanque(int quantidade) {
-		this.combustivel += quantidade;
-	}
-
-	public boolean TurnOn() {
-		if (this.estaLigado == false && this.temBateria == true) {
-			this.estaLigado = true;
-			return true;
-		} else {
-			return false;
+	public Object EncherTanque(double quantidade) {
+		if (TurnOff() == false) {
+			return EncherTanque(quantidade);
 		}
+		this.combustivel += quantidade;
+		return quantidade;
 	}
 
 	public boolean TurnOff() {
 		if (this.estaLigado == true && this.temBateria == true) {
 			this.estaLigado = false;
-			return true;
-		} else {
+			this.velocidade = 0;
+			this.DesligarFarol();
+			System.out.println("Desligou");
 			return false;
 		}
+		return true;
 	}
 
-	public int Velocidade(int velocidadeNova) {
-		if (TurnOn() == true) {
-			return Velocidade(velocidadeNova);
-		}
-
-		if (this.maxVelocidade > this.velocidade) {
-			this.velocidade = this.velocidade + velocidadeNova;
-			return Velocidade(velocidadeNova);
-		} else {
-			if (this.maxVelocidade < this.velocidade) {
-				
-				return this.velocidade = this.maxVelocidade;
-			}
-			return this.velocidade;
-		}
-
+	public void LigarFarol() {
+		if (this.temBateria == true)
+			this.estaOnfarol = true;
 	}
 
-	public void Desacelerar(int valorDaDesacelerar) {
-		if (TurnOn() && this.velocidade > 0) {
+	public void DesligarFarol() {
+		this.estaOnfarol = false;
+	}
+
+	public boolean TurnOn() {
+		if (this.estaLigado == false && this.temBateria == true) {
+			this.estaLigado = true;
+			System.out.println("Ligou o veiculo: " +  this.nomeModelo);
+			return false;
+		}
+		return true;
+	}
+
+	public boolean Acelerar(int velocidadeNova) {
+		if (this.TurnOn() == false) {
+			return this.Acelerar(velocidadeNova);
+		}
+		if (this.velocidade + velocidadeNova > this.maxVelocidade) {
+			return false;
+		}
+		if (this.combustivel >= 20) {
+			this.velocidade += velocidadeNova;
+			this.InformaçõesConsole();
+			System.out.println();
+		}
+		return true;
+	}
+
+	public boolean Desacelerar(int valorDaDesacelerar) {
+		if (this.velocidade - valorDaDesacelerar < 0) {
+			return false;
+		}
+
+		if (TurnOn() == true && this.velocidade > 0) {
 			this.velocidade -= valorDaDesacelerar;
+			this.InformaçõesConsole();
+			System.out.println();
+			
+			return true;
 		}
+		return false;
 	}
 
-	public void Frear() {
-		if (TurnOn() && this.velocidade > 0) {
-			this.velocidade = 0;
-		}
-	}
+	public abstract void Frear();
 
 	public abstract void Buzina();
 
-	public abstract void ShowVeiculosStatus();
+	public abstract void FichaTecnica();
+	
+	public abstract void InformaçõesConsole();
 
 }
