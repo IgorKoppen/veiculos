@@ -32,7 +32,7 @@ public final class Moto extends Veiculo{
 		System.out.println("Marca: " + this.marca);
 		System.out.println("Cor: " + this.cor);
 		System.out.println("Embreagem tipo: " + this.embreagem);
-		System.out.println("Ano de fabria�ao: " + this.anoFabricacao);
+		System.out.println("Ano de fabriacao: " + this.anoFabricacao);
 		System.out.println("Tipo Combustivel: " + this.tipoCombustivel);
 		System.out.println("Peso: " + this.peso + "Kg");
 		System.out.println("Numero de rodas: " + this.numeroDeRodas);

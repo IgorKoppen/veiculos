@@ -23,7 +23,7 @@ public final class Caminhao extends Veiculo {
 		System.out.println("Marca: " + this.marca);
 		System.out.println("Cor: " + this.cor);
 		System.out.println("Embreagem tipo: " + this.embreagem);
-		System.out.println("Ano de fabria�ao: " + this.anoFabricacao);
+		System.out.println("Ano de fabriacao: " + this.anoFabricacao);
 		System.out.println("tipo Combustivel: " + this.tipoCombustivel);
 		System.out.println("tipo tipo de cabine: " + this.tipoDeCabine);
 		System.out.println("Carga Maxima: " + this.cargaMaxima + " t");
