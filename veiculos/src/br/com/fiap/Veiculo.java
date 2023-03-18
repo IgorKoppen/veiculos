@@ -21,6 +21,8 @@ public abstract class Veiculo {
 	protected boolean estaOnfarol;
 	protected boolean aberta;
     protected int posicao;
+    protected boolean setaEsqOn;
+    protected boolean setaDirOn;
 
 	public Veiculo(String nomeModelo, String marca, String cor, String embreagem, String tipoCombustivel,
 			String anoFabricacao, int velocidade, int maxVelocidade, double combustivel, double peso,
@@ -42,6 +44,8 @@ public abstract class Veiculo {
 		this.estaOnfarol = false;
 		this.aberta = false;
 		this.posicao = 0;
+		this.setaEsqOn = false;
+		this.setaDirOn = false;
 	}
 
 	public Object EncherTanque(double quantidade) {    // funçao encher tanque
@@ -57,6 +61,8 @@ public abstract class Veiculo {
 			this.estaLigado = false;
 			this.velocidade = 0;
 			this.DesligarFarol();
+			this.DesligarSetaEsq();
+			this.DesligarSetaDir();
 			System.out.println("Desligou");
 			return false;
 		}
@@ -71,6 +77,27 @@ public abstract class Veiculo {
 	public void DesligarFarol() {           // funcao desligar o farol
 		this.estaOnfarol = false;
 	}
+	
+	public void LigarSetaEsq() {           // funcao ligar a seta esquerda
+		if (this.temBateria == true && TurnOn() == true)
+			this.setaEsqOn = true;
+	}
+
+	public void DesligarSetaEsq() {           // funcao desligar a seta esquerda
+		if(setaEsqOn == true)
+		this.setaEsqOn = false;
+	}
+	
+	public void LigarSetaDir() {           // funcao ligar a seta direita
+		if (this.temBateria == true && TurnOn() == true)
+			this.setaDirOn = true;
+	}
+
+	public void DesligarSetaDir() {           // funcao desligar a seta direita
+		if(setaDirOn == true)
+		this.setaDirOn = false;
+	}
+
 
 	public boolean TurnOn() {              // funcao ligar o carro
 		if (this.estaLigado == false && this.temBateria == true) {
@@ -111,22 +138,6 @@ public abstract class Veiculo {
 		return false;
 	}
 
-	   public void abrir() throws Exception {
-	       if (posicao < 0 || posicao > 100) {
-	            throw new Exception("Posição inválida");
-	        }
-	        aberta = true;
-	        posicao += 10;
-	    }
-
-	    public void fechar() throws Exception {
-	        if (posicao < 0 || posicao > 100) {
-	            throw new Exception("Posição inválida");
-	        }
-	        aberta = false;
-	        posicao -= 10;
-	    }
-
 	    public boolean estaAberta() {
 	        return aberta;
 	    }
@@ -143,5 +154,9 @@ public abstract class Veiculo {
 	public abstract void FichaTecnica();
 	
 	public abstract void InformacoesConsole();
+	
+	public abstract void abrir();
+	
+	public abstract void fechar();
 
 }

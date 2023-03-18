@@ -7,7 +7,8 @@ public final class Carro extends Veiculo {
 
 	public Carro(String nomeModelo, String marca, String cor, String embreagem, String tipoCombustivel,
 			String anoFabricacao, int velocidade, int maxVelocidade, double combustivel, double peso,
-			boolean estaLigado, boolean temBateria, boolean estaOnfarol, int quantidadeDePortas, boolean estaAberta, int posicao) throws ParseException {
+			boolean estaLigado, boolean temBateria, boolean estaOnfarol, int quantidadeDePortas, boolean estaAberta, int posicao,
+			boolean setaEsqOn, boolean setaDirOn) throws ParseException {
 		super(nomeModelo, marca, cor, embreagem, tipoCombustivel, anoFabricacao, velocidade, maxVelocidade, combustivel,
 				peso, estaLigado, temBateria, estaOnfarol);
 		this.quantidadeDePortas = quantidadeDePortas;
@@ -39,7 +40,7 @@ public final class Carro extends Veiculo {
 		}
 	}
 	
-	public void abrir() {
+	public void abrir() {		// funcao para abrir a janela
 	       if (this.posicao < 0 || this.posicao > 100) {
 	            System.out.println("Posicao da janela invalida");
 	            System.out.println();
@@ -52,7 +53,7 @@ public final class Carro extends Veiculo {
 	       }
 	}
 
-	public void fechar() {
+	public void fechar() {		// funcao para fechar a janela
 		 if (this.posicao <= 0 || this.posicao > 100) {
 			 	System.out.println("Posicao da janela invalida");
 			 	System.out.println();
@@ -69,6 +70,8 @@ public final class Carro extends Veiculo {
 	public void InformacoesConsole() {
 		System.out.println("Combustivel Atual: " + this.combustivel );
 		System.out.println("Velocidade atual: " + this.velocidade + "Km/h");
+		System.out.println("Estado da seta esquerda: " + (setaEsqOn == true ? "Seta esquerda ligada!" : "Seta esquerda desligada!" ));
+		System.out.println("Estado da seta direita: " + (setaDirOn == true ? "Seta direita ligada!" : "Seta direita desligada!" ));
 		System.out.println("Estado do Farol: " + (estaOnfarol == true ? "Farol Ligado!" : "Farol Desligado!" ));
 		System.out.println();
 	}

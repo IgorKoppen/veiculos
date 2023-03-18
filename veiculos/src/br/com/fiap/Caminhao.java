@@ -8,7 +8,8 @@ public final class Caminhao extends Veiculo {
 
 	public Caminhao(String nomeModelo, String marca, String cor, String embreagem, String tipoCombustivel,
 			String anoFabricacao, int velocidade, int maxVelocidade, double combustivel, double peso,
-			boolean estaLigado, boolean temBateria, boolean estaOnfarol, String tipoDeCabine, double cargaMaxima, boolean estaAberta, int posicao)
+			boolean estaLigado, boolean temBateria, boolean estaOnfarol, String tipoDeCabine, double cargaMaxima, boolean estaAberta, int posicao,
+			boolean setaEsqOn, boolean setaDirOn)
 			throws ParseException {
 		super(nomeModelo, marca, cor, embreagem, tipoCombustivel, anoFabricacao, velocidade, maxVelocidade, combustivel,
 				peso, estaLigado, temBateria, estaOnfarol);
@@ -50,13 +51,15 @@ public final class Caminhao extends Veiculo {
 	public void InformacoesConsole() {
 		System.out.println("Combustivel Atual: " + this.combustivel);
 		System.out.println("Velocidade atual: " + this.velocidade);
+		System.out.println("Estado da seta esquerda: " + (setaEsqOn == true ? "Seta esquerda ligada!" : "Seta esquerda desligada!" ));
+		System.out.println("Estado da seta direita: " + (setaDirOn == true ? "Seta direita ligada!" : "Seta direita desligada!" ));
 		System.out.println("Estado do Farol: " + (estaOnfarol == true ? "Farol Ligado!" : "Farol Desligado!" ));
 		System.out.println();
 	}
 
-	public void abrir() {
-	       if (this.posicao < 0 || this.posicao > 100) {
-	            System.out.println("Posicao da janela invalida");
+	public void abrir() {		// funcao para abrir a janela
+	       if (this.posicao < 0 || this.posicao >= 100) {
+	            System.out.println("Janela já está totalmente aberta");
 	            System.out.println();
 	        }
 	       else {
@@ -67,7 +70,7 @@ public final class Caminhao extends Veiculo {
 	       }
 	}
 
-	public void fechar() {
+	public void fechar() {		// funcao para fechar a janela
 		 if (this.posicao <= 0 || this.posicao > 100) {
 			 	System.out.println("Posicao da janela invalida");
 			 	System.out.println();
