@@ -19,12 +19,14 @@ public abstract class Veiculo {
 	protected boolean estaLigado;
 	protected boolean temBateria;
 	protected boolean estaOnfarol;
+	protected boolean aberta;
+    protected int posicao;
 
 	public Veiculo(String nomeModelo, String marca, String cor, String embreagem, String tipoCombustivel,
 			String anoFabricacao, int velocidade, int maxVelocidade, double combustivel, double peso,
 			boolean estaLigado, boolean temBateria, boolean estaOnfarol) throws ParseException {
 
-		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");  // instancia o formato das datas
 		this.nomeModelo = nomeModelo;
 		this.marca = marca;
 		this.cor = cor;
@@ -38,9 +40,11 @@ public abstract class Veiculo {
 		this.estaLigado = false;
 		this.temBateria = true;
 		this.estaOnfarol = false;
+		this.aberta = false;
+		this.posicao = 0;
 	}
 
-	public Object EncherTanque(double quantidade) {
+	public Object EncherTanque(double quantidade) {    // funÃ§ao encher tanque
 		if (TurnOff() == false) {
 			return EncherTanque(quantidade);
 		}
@@ -48,7 +52,7 @@ public abstract class Veiculo {
 		return quantidade;
 	}
 
-	public boolean TurnOff() {
+	public boolean TurnOff() {                 // funcao desligar carro
 		if (this.estaLigado == true && this.temBateria == true) {
 			this.estaLigado = false;
 			this.velocidade = 0;
@@ -59,16 +63,16 @@ public abstract class Veiculo {
 		return true;
 	}
 
-	public void LigarFarol() {
+	public void LigarFarol() {           // funcao ligar o farol
 		if (this.temBateria == true)
 			this.estaOnfarol = true;
 	}
 
-	public void DesligarFarol() {
+	public void DesligarFarol() {           // funcao desligar o farol
 		this.estaOnfarol = false;
 	}
 
-	public boolean TurnOn() {
+	public boolean TurnOn() {              // funcao ligar o carro
 		if (this.estaLigado == false && this.temBateria == true) {
 			this.estaLigado = true;
 			System.out.println("Ligou o veiculo: " +  this.nomeModelo);
@@ -77,7 +81,7 @@ public abstract class Veiculo {
 		return true;
 	}
 
-	public boolean Acelerar(int velocidadeNova) {
+	public boolean Acelerar(int velocidadeNova) {          // funcao para acelerar
 		if (this.TurnOn() == false) {
 			return this.Acelerar(velocidadeNova);
 		}
@@ -86,20 +90,20 @@ public abstract class Veiculo {
 		}
 		if (this.combustivel >= 20) {
 			this.velocidade += velocidadeNova;
-			this.InformaçõesConsole();
+			this.InformacoesConsole();
 			System.out.println();
 		}
 		return true;
 	}
 
-	public boolean Desacelerar(int valorDaDesacelerar) {
+	public boolean Desacelerar(int valorDaDesacelerar) {       // funcao para desacelerar o carro
 		if (this.velocidade - valorDaDesacelerar < 0) {
 			return false;
 		}
 
 		if (TurnOn() == true && this.velocidade > 0) {
 			this.velocidade -= valorDaDesacelerar;
-			this.InformaçõesConsole();
+			this.InformacoesConsole();
 			System.out.println();
 			
 			return true;
@@ -107,12 +111,37 @@ public abstract class Veiculo {
 		return false;
 	}
 
+	   public void abrir() throws Exception {
+	       if (posicao < 0 || posicao > 100) {
+	            throw new Exception("PosiÃ§Ã£o invÃ¡lida");
+	        }
+	        aberta = true;
+	        posicao += 10;
+	    }
+
+	    public void fechar() throws Exception {
+	        if (posicao < 0 || posicao > 100) {
+	            throw new Exception("PosiÃ§Ã£o invÃ¡lida");
+	        }
+	        aberta = false;
+	        posicao -= 10;
+	    }
+
+	    public boolean estaAberta() {
+	        return aberta;
+	    }
+
+	    public int getPosicao() {
+	        return posicao;
+	    }
+	
+
 	public abstract void Frear();
 
 	public abstract void Buzina();
 
 	public abstract void FichaTecnica();
 	
-	public abstract void InformaçõesConsole();
+	public abstract void InformacoesConsole();
 
 }

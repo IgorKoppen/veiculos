@@ -8,7 +8,7 @@ public final class Caminhao extends Veiculo {
 
 	public Caminhao(String nomeModelo, String marca, String cor, String embreagem, String tipoCombustivel,
 			String anoFabricacao, int velocidade, int maxVelocidade, double combustivel, double peso,
-			boolean estaLigado, boolean temBateria, boolean estaOnfarol, String tipoDeCabine, double cargaMaxima)
+			boolean estaLigado, boolean temBateria, boolean estaOnfarol, String tipoDeCabine, double cargaMaxima, boolean estaAberta, int posicao)
 			throws ParseException {
 		super(nomeModelo, marca, cor, embreagem, tipoCombustivel, anoFabricacao, velocidade, maxVelocidade, combustivel,
 				peso, estaLigado, temBateria, estaOnfarol);
@@ -22,7 +22,7 @@ public final class Caminhao extends Veiculo {
 		System.out.println("Marca: " + this.marca);
 		System.out.println("Cor: " + this.cor);
 		System.out.println("Embreagem tipo: " + this.embreagem);
-		System.out.println("Ano de fabriaçao: " + this.anoFabricacao);
+		System.out.println("Ano de fabriaï¿½ao: " + this.anoFabricacao);
 		System.out.println("tipo Combustivel: " + this.tipoCombustivel);
 		System.out.println("tipo tipo de cabine: " + this.tipoDeCabine);
 		System.out.println("Carga Maxima: " + this.cargaMaxima + " t");
@@ -34,6 +34,7 @@ public final class Caminhao extends Veiculo {
 	public void Buzina() {
 		if (this.estaLigado) {
 			System.out.println("Bez Bez");
+			System.out.println();
 		}
 
 	}
@@ -44,12 +45,38 @@ public final class Caminhao extends Veiculo {
 			this.velocidade = 0;
 		}
 	}
+	
 	@Override
-	public void InformaçõesConsole() {
+	public void InformacoesConsole() {
 		System.out.println("Combustivel Atual: " + this.combustivel);
 		System.out.println("Velocidade atual: " + this.velocidade);
 		System.out.println("Estado do Farol: " + (estaOnfarol == true ? "Farol Ligado!" : "Farol Desligado!" ));
+		System.out.println();
 	}
 
+	public void abrir() {
+	       if (this.posicao < 0 || this.posicao > 100) {
+	            System.out.println("Posicao da janela invalida");
+	            System.out.println();
+	        }
+	       else {
+	    	   this.aberta = true;
+	    	   this.posicao += 10;
+	    	   System.out.println("Janela foi aberta na posiÃ§Ã£o: " + this.posicao + "%");
+	    	   System.out.println();
+	       }
+	}
 
+	public void fechar() {
+		 if (this.posicao <= 0 || this.posicao > 100) {
+			 	System.out.println("Posicao da janela invalida");
+			 	System.out.println();
+	        }
+		 else {
+	        this.aberta = false;
+	        this.posicao -= 10;
+	        System.out.println("Janela foi fechada na posiÃ§Ã£o: " + this.posicao + "%");
+	        System.out.println();
+		 }
+	}
 }
