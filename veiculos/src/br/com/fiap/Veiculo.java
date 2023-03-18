@@ -23,10 +23,11 @@ public abstract class Veiculo {
     protected int posicao;
     protected boolean setaEsqOn;
     protected boolean setaDirOn;
+    protected int numeroDeRodas;
 
 	public Veiculo(String nomeModelo, String marca, String cor, String embreagem, String tipoCombustivel,
 			String anoFabricacao, int velocidade, int maxVelocidade, double combustivel, double peso,
-			boolean estaLigado, boolean temBateria, boolean estaOnfarol) throws ParseException {
+			boolean estaLigado, boolean temBateria, boolean estaOnfarol, int numeroDeRodas) throws ParseException {
 
 		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");  // instancia o formato das datas
 		this.nomeModelo = nomeModelo;
@@ -46,6 +47,7 @@ public abstract class Veiculo {
 		this.posicao = 0;
 		this.setaEsqOn = false;
 		this.setaDirOn = false;
+		this.numeroDeRodas = numeroDeRodas;
 	}
 
 	public Object EncherTanque(double quantidade) {    // funçao encher tanque

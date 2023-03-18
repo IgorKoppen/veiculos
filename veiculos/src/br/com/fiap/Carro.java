@@ -8,9 +8,9 @@ public final class Carro extends Veiculo {
 	public Carro(String nomeModelo, String marca, String cor, String embreagem, String tipoCombustivel,
 			String anoFabricacao, int velocidade, int maxVelocidade, double combustivel, double peso,
 			boolean estaLigado, boolean temBateria, boolean estaOnfarol, int quantidadeDePortas, boolean estaAberta, int posicao,
-			boolean setaEsqOn, boolean setaDirOn) throws ParseException {
+			boolean setaEsqOn, boolean setaDirOn, int numeroDeRodas) throws ParseException {
 		super(nomeModelo, marca, cor, embreagem, tipoCombustivel, anoFabricacao, velocidade, maxVelocidade, combustivel,
-				peso, estaLigado, temBateria, estaOnfarol);
+				peso, estaLigado, temBateria, estaOnfarol, numeroDeRodas);
 		this.quantidadeDePortas = quantidadeDePortas;
 	}
 
@@ -24,6 +24,7 @@ public final class Carro extends Veiculo {
 		System.out.println("Tipo Combustivel: " + this.tipoCombustivel);
 		System.out.println("Quantidade de portas: " + this.quantidadeDePortas);
 		System.out.println("Peso: " + this.peso + "Kg");
+		System.out.println("Numero de rodas: " + this.numeroDeRodas);
 		System.out.println();
 	}
 
@@ -37,19 +38,20 @@ public final class Carro extends Veiculo {
 	public void Frear() {
 		if (TurnOn() == true && this.velocidade > 0) {
 			this.velocidade = 0;
+			this.InformacoesConsole();
 		}
 	}
 	
 	public void abrir() {		// funcao para abrir a janela
-	       if (this.posicao < 0 || this.posicao > 100) {
-	            System.out.println("Posicao da janela invalida");
-	            System.out.println();
+		if (this.posicao < 0 || this.posicao > 100) {
+			System.out.println("Posicao da janela invalida");
+	        System.out.println();
 	        }
-	       else {
-	    	   this.aberta = true;
-	    	   this.posicao += 10;
-	    	   System.out.println("Janela foi aberta na posição: " + this.posicao + "%");
-	    	   System.out.println();
+	     else {
+	    	this.aberta = true;
+	    	this.posicao += 10;
+	    	System.out.println("Janela foi aberta na posição: " + this.posicao + "%");
+	    	System.out.println();
 	       }
 	}
 
@@ -75,7 +77,4 @@ public final class Carro extends Veiculo {
 		System.out.println("Estado do Farol: " + (estaOnfarol == true ? "Farol Ligado!" : "Farol Desligado!" ));
 		System.out.println();
 	}
-
-	
-
 }

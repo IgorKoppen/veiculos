@@ -9,10 +9,10 @@ public final class Caminhao extends Veiculo {
 	public Caminhao(String nomeModelo, String marca, String cor, String embreagem, String tipoCombustivel,
 			String anoFabricacao, int velocidade, int maxVelocidade, double combustivel, double peso,
 			boolean estaLigado, boolean temBateria, boolean estaOnfarol, String tipoDeCabine, double cargaMaxima, boolean estaAberta, int posicao,
-			boolean setaEsqOn, boolean setaDirOn)
+			boolean setaEsqOn, boolean setaDirOn, int numeroDeRodas)
 			throws ParseException {
 		super(nomeModelo, marca, cor, embreagem, tipoCombustivel, anoFabricacao, velocidade, maxVelocidade, combustivel,
-				peso, estaLigado, temBateria, estaOnfarol);
+				peso, estaLigado, temBateria, estaOnfarol, numeroDeRodas);
 		this.tipoDeCabine = tipoDeCabine;
 		this.cargaMaxima = cargaMaxima;
 	}
@@ -28,6 +28,7 @@ public final class Caminhao extends Veiculo {
 		System.out.println("tipo tipo de cabine: " + this.tipoDeCabine);
 		System.out.println("Carga Maxima: " + this.cargaMaxima + " t");
 		System.out.println("Peso: " + this.peso + "Kg");
+		System.out.println("Numero de rodas: " + this.numeroDeRodas);
 		System.out.println();
 	}
 
@@ -44,6 +45,7 @@ public final class Caminhao extends Veiculo {
 	public void Frear() {
 		if (TurnOn() == true && this.velocidade > 0) {
 			this.velocidade = 0;
+			this.InformacoesConsole();
 		}
 	}
 	

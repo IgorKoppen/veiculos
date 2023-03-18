@@ -1,0 +1,64 @@
+package br.com.fiap;
+
+import java.text.ParseException;
+
+public final class Moto extends Veiculo{
+
+	public Moto(String nomeModelo, String marca, String cor, String embreagem, String tipoCombustivel,
+			String anoFabricacao, int velocidade, int maxVelocidade, double combustivel, double peso,
+			boolean estaLigado, boolean temBateria, boolean estaOnfarol, boolean setaEsqOn, boolean setaDirOn,
+			int numeroDeRodas) throws ParseException {
+		super(nomeModelo, marca, cor, embreagem, tipoCombustivel, anoFabricacao, velocidade, maxVelocidade,
+				combustivel, peso, estaLigado, temBateria, estaOnfarol, numeroDeRodas);
+	}
+
+	@Override
+	public void Frear() {
+		if (TurnOn() == true && this.velocidade > 0) {
+			this.velocidade = 0;
+			this.InformacoesConsole();
+		}
+	}
+
+	@Override
+	public void Buzina() {
+		System.out.println("Buz Buz");
+		System.out.println();
+	}
+
+	@Override
+	public void FichaTecnica() {
+		System.out.println("Modelo: " + this.nomeModelo);
+		System.out.println("Marca: " + this.marca);
+		System.out.println("Cor: " + this.cor);
+		System.out.println("Embreagem tipo: " + this.embreagem);
+		System.out.println("Ano de fabria�ao: " + this.anoFabricacao);
+		System.out.println("Tipo Combustivel: " + this.tipoCombustivel);
+		System.out.println("Peso: " + this.peso + "Kg");
+		System.out.println("Numero de rodas: " + this.numeroDeRodas);
+		System.out.println();
+	}
+
+	@Override
+	public void InformacoesConsole() {
+		System.out.println("Combustivel Atual: " + this.combustivel );
+		System.out.println("Velocidade atual: " + this.velocidade + "Km/h");
+		System.out.println("Estado da seta esquerda: " + (setaEsqOn == true ? "Seta esquerda ligada!" : "Seta esquerda desligada!" ));
+		System.out.println("Estado da seta direita: " + (setaDirOn == true ? "Seta direita ligada!" : "Seta direita desligada!" ));
+		System.out.println("Estado do Farol: " + (estaOnfarol == true ? "Farol Ligado!" : "Farol Desligado!" ));
+		System.out.println();
+	}
+
+	@Override
+	public void abrir() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void fechar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
