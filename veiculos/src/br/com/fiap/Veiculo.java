@@ -157,15 +157,6 @@ public abstract class Veiculo {
 		return false;
 	}
 
-	    public boolean estaAberta() {
-	        return aberta;
-	    }
-
-	    public int getPosicao() {
-	        return posicao;
-	    }
-	
-
 	public abstract void Frear();
 
 	public abstract void Buzina();
