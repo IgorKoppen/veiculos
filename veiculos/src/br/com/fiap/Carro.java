@@ -5,11 +5,11 @@ import java.text.ParseException;
 public final class Carro extends Veiculo {
 	private int quantidadeDePortas;
 
-	public Carro(String nomeModelo, String marca, String cor, String embreagem, String tipoCombustivel,
+	public Carro(String nomeModelo, String marca, String cor, String cambio, String tipoCombustivel,
 			String anoFabricacao, int velocidade, int maxVelocidade, double combustivel, double peso,
 			boolean estaLigado, boolean temBateria, boolean estaOnfarol, int quantidadeDePortas, boolean estaAberta, int posicao,
 			boolean setaEsqOn, boolean setaDirOn, int numeroDeRodas) throws ParseException {
-		super(nomeModelo, marca, cor, embreagem, tipoCombustivel, anoFabricacao, velocidade, maxVelocidade, combustivel,
+		super(nomeModelo, marca, cor, cambio, tipoCombustivel, anoFabricacao, velocidade, maxVelocidade, combustivel,
 				peso, estaLigado, temBateria, estaOnfarol, numeroDeRodas);
 		this.quantidadeDePortas = quantidadeDePortas;
 	}
@@ -19,7 +19,7 @@ public final class Carro extends Veiculo {
 		System.out.println("Modelo: " + this.nomeModelo);
 		System.out.println("Marca: " + this.marca);
 		System.out.println("Cor: " + this.cor);
-		System.out.println("Embreagem tipo: " + this.embreagem);
+		System.out.println("Tipo do cambio: " + this.cambio);
 		System.out.println("Ano de fabriacao: " + this.anoFabricacao);
 		System.out.println("Tipo Combustivel: " + this.tipoCombustivel);
 		System.out.println("Quantidade de portas: " + this.quantidadeDePortas);

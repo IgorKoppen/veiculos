@@ -20,10 +20,13 @@ public class Main {
 			Caminhao FMX8x4R = new Caminhao("FMX 8x4 R", "volvo", "amarelo", "automatico", "Eletrico", "15/10/2023", 0,
 					245, 0.2, 11808, false, true, false, "Cabine estendida", 52.0, false, 0, false, false, 8);
 			Moto CakeMakka = new Moto("Cake Makka", "polestar", "azul claro", "automatico", "eletrico", "14/12/2022",
-					0, 45, 0, 55, false, true, false, false, false, 2);
+					0, 45, 0, 55, false, true, false, false, false, 2, true);
 			
 			CakeMakka.EncherTanque(50);
 			CakeMakka.Acelerar(30);
+			CakeMakka.mudarMarcha("re");
+			CakeMakka.mudarMarcha("frente");
+			CakeMakka.mudarMarcha("frente");
 			CakeMakka.Acelerar(5);
 			CakeMakka.LigarFarol();
 			CakeMakka.Desacelerar(10);
@@ -41,8 +44,9 @@ public class Main {
 			FH4x2R.abrir();
 			FH4x2R.abrir();
 			FH4x2R.fechar();
-			
+			FH4x2R.Frear();
 			FH4x2R.InformacoesConsole();
+			FH4x2R.FichaTecnica();
 
 		} catch (ParseException e) {
 			e.printStackTrace();

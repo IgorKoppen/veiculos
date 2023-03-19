@@ -9,7 +9,7 @@ public abstract class Veiculo {
 	protected String nomeModelo;
 	protected String marca;
 	protected String cor;
-	protected String embreagem;
+	protected String cambio;
 	protected String tipoCombustivel;
 	protected Date anoFabricacao;
 	protected int velocidade;
@@ -24,8 +24,9 @@ public abstract class Veiculo {
     protected boolean setaEsqOn;
     protected boolean setaDirOn;
     protected int numeroDeRodas;
+    protected String marchaAtual;
 
-	public Veiculo(String nomeModelo, String marca, String cor, String embreagem, String tipoCombustivel,
+	public Veiculo(String nomeModelo, String marca, String cor, String cambio, String tipoCombustivel,
 			String anoFabricacao, int velocidade, int maxVelocidade, double combustivel, double peso,
 			boolean estaLigado, boolean temBateria, boolean estaOnfarol, int numeroDeRodas) throws ParseException {
 
@@ -33,7 +34,7 @@ public abstract class Veiculo {
 		this.nomeModelo = nomeModelo;
 		this.marca = marca;
 		this.cor = cor;
-		this.embreagem = embreagem;
+		this.cambio = cambio;
 		this.tipoCombustivel = tipoCombustivel;
 		this.anoFabricacao = formato.parse(anoFabricacao);
 		this.velocidade = 0;
@@ -48,6 +49,7 @@ public abstract class Veiculo {
 		this.setaEsqOn = false;
 		this.setaDirOn = false;
 		this.numeroDeRodas = numeroDeRodas;
+		this.marchaAtual = "frente";
 	}
 
 	public Object EncherTanque(double quantidade) {    // funçao encher tanque
@@ -124,6 +126,21 @@ public abstract class Veiculo {
 		}
 		return true;
 	}
+	
+    public void mudarMarcha(String novaMarcha) {      // funcao mudar marcha
+        if (novaMarcha.equals("frente") && !this.marchaAtual.equals("frente")) {
+            System.out.println("Mudando para a marcha de frente");
+            System.out.println();
+            this.marchaAtual = "frente";
+        } else if (novaMarcha.equals("re") && !this.marchaAtual.equals("re")) {
+            System.out.println("Mudando para a marcha ré");
+            System.out.println();
+            this.marchaAtual = "re";
+        } else {
+            System.out.println("Já está nesta marcha");
+            System.out.println();
+        }
+    }
 
 	public boolean Desacelerar(int valorDaDesacelerar) {       // funcao para desacelerar o carro
 		if (this.velocidade - valorDaDesacelerar < 0) {

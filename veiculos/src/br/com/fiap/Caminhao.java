@@ -6,12 +6,12 @@ public final class Caminhao extends Veiculo {
 	private String tipoDeCabine;
 	private double cargaMaxima;
 
-	public Caminhao(String nomeModelo, String marca, String cor, String embreagem, String tipoCombustivel,
+	public Caminhao(String nomeModelo, String marca, String cor, String cambio, String tipoCombustivel,
 			String anoFabricacao, int velocidade, int maxVelocidade, double combustivel, double peso,
 			boolean estaLigado, boolean temBateria, boolean estaOnfarol, String tipoDeCabine, double cargaMaxima, boolean estaAberta, int posicao,
 			boolean setaEsqOn, boolean setaDirOn, int numeroDeRodas)
 			throws ParseException {
-		super(nomeModelo, marca, cor, embreagem, tipoCombustivel, anoFabricacao, velocidade, maxVelocidade, combustivel,
+		super(nomeModelo, marca, cor, cambio, tipoCombustivel, anoFabricacao, velocidade, maxVelocidade, combustivel,
 				peso, estaLigado, temBateria, estaOnfarol, numeroDeRodas);
 		this.tipoDeCabine = tipoDeCabine;
 		this.cargaMaxima = cargaMaxima;
@@ -22,7 +22,7 @@ public final class Caminhao extends Veiculo {
 		System.out.println("Modelo: " + this.nomeModelo);
 		System.out.println("Marca: " + this.marca);
 		System.out.println("Cor: " + this.cor);
-		System.out.println("Embreagem tipo: " + this.embreagem);
+		System.out.println("Tipo do cambio: " + this.cambio);
 		System.out.println("Ano de fabriacao: " + this.anoFabricacao);
 		System.out.println("tipo Combustivel: " + this.tipoCombustivel);
 		System.out.println("tipo tipo de cabine: " + this.tipoDeCabine);
