@@ -43,26 +43,26 @@ public final class Carro extends Veiculo {
 	}
 	
 	public void abrir() {		// funcao para abrir a janela
-		if (this.posicao < 0 || this.posicao > 100) {
+		if (this.posicao <= 0 || this.posicao > 100) {
 			System.out.println("Posicao da janela invalida");
 	        System.out.println();
 	        }
 	     else {
 	    	this.aberta = true;
-	    	this.posicao += 10;
+	    	this.posicao -= 10;
 	    	System.out.println("Janela foi aberta na posição: " + this.posicao + "%");
 	    	System.out.println();
 	       }
 	}
 
 	public void fechar() {		// funcao para fechar a janela
-		 if (this.posicao <= 0 || this.posicao > 100) {
+		 if (this.posicao < 0 || this.posicao >= 100) {
 			 	System.out.println("Posicao da janela invalida");
 			 	System.out.println();
 	        }
 		 else {
 	        this.aberta = false;
-	        this.posicao -= 10;
+	        this.posicao += 10;
 	        System.out.println("Janela foi fechada na posição: " + this.posicao + "%");
 	        System.out.println();
 		 }

@@ -45,7 +45,7 @@ public abstract class Veiculo {
 		this.temBateria = true;
 		this.estaOnfarol = false;
 		this.aberta = false;
-		this.posicao = 0;
+		this.posicao = 100;
 		this.setaEsqOn = false;
 		this.setaDirOn = false;
 		this.numeroDeRodas = numeroDeRodas;
